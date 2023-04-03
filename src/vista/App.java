@@ -1,19 +1,31 @@
 package vista;
-
+import modelo.Carpa;
 import modelo.DatosCliente;
+import modelo.Hotel;
+import modelo.Cabagna;
 
 public class App {
 
     public static void main(String []args){
-        //instanciar un objeto de tipo datos de un cliente
         //Constructor
-        DatosCliente datosCliente = new DatosCliente();
-        datosCliente.nombre = "Francisca";
-        datosCliente.rut = "18326662-4";
+        Carpa carpa = new Carpa(new DatosCliente("Francisca Benavides", "18326662-4"), 8, 12.000, "media", 2 );
 
-        System.out.println("Nombre del cliente: "+datosCliente.nombre);
-        System.out.println("Rut del cliente: "+datosCliente.rut);
+        Carpa carpa2 = new Carpa();
+
+        Hotel hotel = new Hotel();
+
+        System.out.println(hotel.subTotal());
+
+        Cabagna cabagna = new Cabagna();
+
+        System.out.println(cabagna.bonoDescuento());
+
+        System.out.println(carpa.subTotal());
+
+        System.out.println(carpa2.subTotal());
 
     }
+
+
 
 }
