@@ -1,28 +1,20 @@
 package vista;
-import modelo.Carpa;
-import modelo.DatosCliente;
-import modelo.Hotel;
-import modelo.Cabagna;
+import modelo.*;
 
 public class App {
 
     public static void main(String []args){
-        //Constructor
-        Carpa carpa = new Carpa(new DatosCliente("Francisca Benavides", "18326662-4"), 8, 12.000, "media", 2 );
 
-        Carpa carpa2 = new Carpa();
+        Carpa carpa = new Carpa (new DatosCliente("Francisca Benavides", "18326662-4"), 8,20000, "media", 8);
 
-        Hotel hotel = new Hotel();
+        Hotel hotel = new Hotel(new DatosCliente("Nobara Cat", "20222554-8"), 50000, 15, "baja", true, 2, false);
 
-        System.out.println(hotel.subTotal());
+        Cabagna cabagna = new Cabagna(new DatosCliente("Ricardo Nuñez", "17625542-K"), 40000, 5,"media", false, 8, true);;
 
-        Cabagna cabagna = new Cabagna();
-
-        System.out.println(cabagna.bonoDescuento());
-
-        System.out.println(carpa.subTotal());
-
-        System.out.println(carpa2.subTotal());
+        System.out.println("El subtotal de la cabaña es: $"+cabagna.subTotal());
+        System.out.println("El bono de descuento de la cabaña es: $"+cabagna.bonoDescuento());
+        System.out.println("El total a pagar de la cabaña es: $"+cabagna.valorACancelar());
+        System.out.println("El incremento en el valor base es de: $"+cabagna.incrementaValorBase());
 
     }
 
