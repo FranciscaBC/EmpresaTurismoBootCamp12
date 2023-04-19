@@ -9,19 +9,22 @@ public abstract class Hospederia extends MedioDeAlojamiento {
         this.esFumador = esFumador;
         this.capacidad = capacidad;
     }
+
     public Hospederia() {
     }
 
-    //GETTERS Y SETTERS
     public boolean isEsFumador() {
         return esFumador;
     }
+
     public void setEsFumador(boolean esFumador) {
         this.esFumador = esFumador;
     }
+
     public int getCapacidad() {
         return capacidad;
     }
+
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }

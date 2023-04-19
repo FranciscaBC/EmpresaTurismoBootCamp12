@@ -1,103 +1,78 @@
 package controlador;
 
 import modelo.*;
+
 import java.util.ArrayList;
+
 
 public class EmpresaTurismo {
     private ArrayList<MedioDeAlojamiento> empresaTurismo;
-    
     public EmpresaTurismo(ArrayList<MedioDeAlojamiento> empresaTurismo) {
         this.empresaTurismo = empresaTurismo;
     }
-    public EmpresaTurismo(){}
 
     public ArrayList<MedioDeAlojamiento> getEmpresaTurismo() {
         return empresaTurismo;
     }
+
     public void setEmpresaTurismo(ArrayList<MedioDeAlojamiento> empresaTurismo) {
         this.empresaTurismo = empresaTurismo;
     }
 
-    public int buscarCte(String rut){
-        for(int i=0; i < empresaTurismo.size();i++){
-            if(empresaTurismo.get(i).getDatosCliente().getRut().compareToIgnoreCase(rut)==0 ){
-                return i;}}
-        return -1;} //No se encontro cte
+    public int buscarCte(String rut) {
+        for (int i = 0; i < empresaTurismo.size(); i++) {
+            if (empresaTurismo.get(i).getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
-        //Ingresar Cabaña
-        public void ingresarAlojamientoCabagna(Cabagna cabagna){
-            if(buscarCte(cabagna.getDatosCliente().getRut())==-1){
-                empresaTurismo.add(cabagna);}}
+    public void ingresarAlojamientoCabagna(Cabagna cabagna) {
+        if (buscarCte(cabagna.getDatosCliente().getRut()) == -1) {
+            empresaTurismo.add(cabagna);
+        }
+    }
 
-        //Ingresar Hotel
-        public void ingresarAlojamientoHotel(Hotel hotel){
-            if(buscarCte(hotel.getDatosCliente().getRut())==-1){
-                empresaTurismo.add(hotel);}}
+    public void ingresarAlojamientoHotel(Hotel hotel) {
+        if (buscarCte(hotel.getDatosCliente().getRut()) == -1) {
+            empresaTurismo.add(hotel);
+        }
+    }
 
-        //Ingresar Carpa
-        public void ingresarAlojamientoCarpa(Carpa carpa){
-            if(buscarCte(carpa.getDatosCliente().getRut())==-1){
-                empresaTurismo.add(carpa);}}
+    public void ingresarAlojamientoCarpa(Carpa carpa) {
+        if (buscarCte(carpa.getDatosCliente().getRut()) == -1) {
+            empresaTurismo.add(carpa);
+        }
+    }
 
 
     public String verAlojamientos() {
-        String msj = "";
+        StringBuilder msj = new StringBuilder();
         int contador = 0;
 
         for (MedioDeAlojamiento alojamiento : empresaTurismo) {
-            String tipoAlojamiento = "";
-            if (alojamiento instanceof Hotel) {
-                tipoAlojamiento = "Hotel";
-                Hotel hotel = (Hotel) alojamiento;
-                msj +=  "\nTipo de alojamiento: Hotel" +
-                        "\n Nombre cliente: " + hotel.getDatosCliente().getNombre() +
-                        "\n El rut del cliente es: " + hotel.getDatosCliente().getRut() +
-                        "\n Temporada: " + hotel.getTipoTemporada() +
-                        "\n Cantidad de noches: " + hotel.getCantidadNoches() +
-                        "\n Valor base noche: " + hotel.getValorBaseNoche() +
-                        "\n Capacidad: " + hotel.getCapacidad() +
-                        "\n Es fumador: " + hotel.isEsFumador() +
-                        "\n Con desayuno: " + hotel.isConDesayuno() +
-                        "\n\n";
+            if (alojamiento instanceof Hotel hotel) {
+                msj.append("\nTipo de alojamiento: Hotel" + "\n Nombre cliente: ").append(hotel.getDatosCliente().getNombre()).append("\n El rut del cliente es: ").append(hotel.getDatosCliente().getRut()).append("\n Temporada: ").append(hotel.getTipoTemporada()).append("\n Cantidad de noches: ").append(hotel.getCantidadNoches()).append("\n Valor base noche: ").append(hotel.getValorBaseNoche()).append("\n Capacidad: ").append(hotel.getCapacidad()).append("\n Es fumador: ").append(hotel.isEsFumador()).append("\n Con desayuno: ").append(hotel.isConDesayuno()).append("\n\n");
                 contador++;
-            } else if (alojamiento instanceof Cabagna) {
-                tipoAlojamiento = "Cabagna";
-                Cabagna cabagna = (Cabagna) alojamiento;
-                msj +=  "\nTipo de alojamiento: Cabania" +
-                        "\n Nombre cliente: " + cabagna.getDatosCliente().getNombre() +
-                        "\n El rut del cliente es: " + cabagna.getDatosCliente().getRut() +
-                        "\n Temporada: " + cabagna.getTipoTemporada() +
-                        "\n Cantidad de noches: " + cabagna.getCantidadNoches() +
-                        "\n Valor base noche: " + cabagna.getValorBaseNoche() +
-                        "\n Capacidad: " + cabagna.getCapacidad() +
-                        "\n Con chimenea: " + cabagna.isChimenea() +
-                        "\n\n";
+            } else if (alojamiento instanceof Cabagna cabagna) {
+                msj.append("\nTipo de alojamiento: Cabania" + "\n Nombre cliente: ").append(cabagna.getDatosCliente().getNombre()).append("\n El rut del cliente es: ").append(cabagna.getDatosCliente().getRut()).append("\n Temporada: ").append(cabagna.getTipoTemporada()).append("\n Cantidad de noches: ").append(cabagna.getCantidadNoches()).append("\n Valor base noche: ").append(cabagna.getValorBaseNoche()).append("\n Capacidad: ").append(cabagna.getCapacidad()).append("\n Con chimenea: ").append(cabagna.isChimenea()).append("\n\n");
                 contador++;
-            } else if (alojamiento instanceof Carpa) {
-                tipoAlojamiento = "Carpa";
-                Carpa carpa = (Carpa) alojamiento;
-                msj +=  "\nTipo de alojamiento: Carpa" +
-                        "\n Nombre cliente: " + carpa.getDatosCliente().getNombre() +
-                        "\n El rut del cliente es: " + carpa.getDatosCliente().getRut() +
-                        "\n Temporada: " + carpa.getTipoTemporada() +
-                        "\n Cantidad de noches: " + carpa.getCantidadNoches() +
-                        "\n Valor base noche: " + carpa.getValorBaseNoche() +
-                        "\n Cantidad de personas: " + carpa.getCantidadPersonas() +
-                        "\n\n";
+            } else if (alojamiento instanceof Carpa carpa) {
+                msj.append("\nTipo de alojamiento: Carpa" + "\n Nombre cliente: ").append(carpa.getDatosCliente().getNombre()).append("\n El rut del cliente es: ").append(carpa.getDatosCliente().getRut()).append("\n Temporada: ").append(carpa.getTipoTemporada()).append("\n Cantidad de noches: ").append(carpa.getCantidadNoches()).append("\n Valor base noche: ").append(carpa.getValorBaseNoche()).append("\n Cantidad de personas: ").append(carpa.getCantidadPersonas()).append("\n\n");
                 contador++;
             }
         }
         if (contador == 0) {
-                System.out.println("No existen registros de alojamientos :(");
+            System.out.println("No existen registros de alojamientos :(");
         }
-        return msj;
+        return msj.toString();
     }
 
 
     public void mostrarCliente(String rut) {
         MedioDeAlojamiento alojamientoEncontrado = null;
-        for (int i = 0; i < empresaTurismo.size(); i++) {
-            MedioDeAlojamiento alojamiento = empresaTurismo.get(i);
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
             if (alojamiento.getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
                 alojamientoEncontrado = alojamiento;
                 break;
@@ -123,25 +98,54 @@ public class EmpresaTurismo {
                 System.out.println("Capacidad: " + ((Cabagna) alojamientoEncontrado).getCapacidad());
                 System.out.println("Con chimenea: " + ((Cabagna) alojamientoEncontrado).isChimenea());
                 System.out.println("Es fumador: " + ((Cabagna) alojamientoEncontrado).isEsFumador());
-            }}
-        System.out.println("\n");
-    };
+            }
+            System.out.println(" \n");
+        } else {
+            System.out.println("El rut ingresado no existe en nuestros registros, favor intente con otro. \n");
+        }
 
-
-    public int totalAdicional(String rut) {
-        return empresaTurismo.stream() //devuelve un flujo de elementos de la coleccion
-                .filter(alojamiento -> alojamiento.getDatosCliente().getRut().equals(rut)) // filtra solo los alojamientos del cliente con el rut indicado
-                .filter(alojamiento -> alojamiento instanceof Hotel)//filtra solo los elementos de clase Hotel
-                .mapToInt(alojamiento -> ((Hotel) alojamiento).adicional())//Transforma cada elemento en su valor adicional correspondiente
-                .sum();//suma todos los valores adicionales
     }
 
 
-    public int totalBonoDescuento(String rut) {
-        return empresaTurismo.stream()
-                .filter(a -> a.getDatosCliente().getRut().equalsIgnoreCase(rut))
-                .mapToInt(MedioDeAlojamiento::bonoDescuento)
-                .sum();
+    public String totalAdicional(String rut) {
+        MedioDeAlojamiento alojamientoEncontrado = null;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
+                alojamientoEncontrado = alojamiento;
+                break;
+            }
+        }
+        if (alojamientoEncontrado == null) {
+            return "No se pudo calcular debido a que el rut ingresado no existe en nuestros registros, favor intente con otro. \n";
+        }
+        int totalAdicional = 0;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().equalsIgnoreCase(rut) && alojamiento instanceof Hotel) {
+                totalAdicional += ((Hotel) alojamiento).adicional();
+            }
+        }
+        return String.valueOf(totalAdicional);
+    }
+
+
+    public String totalBonoDescuento(String rut) {
+        MedioDeAlojamiento alojamientoEncontrado = null;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
+                alojamientoEncontrado = alojamiento;
+                break;
+            }
+        }
+        if (alojamientoEncontrado == null) {
+            return "No se pudo calcular debido a que el rut ingresado no existe en nuestros registros, favor intente con otro. \n";
+        }
+        int totalBonoDescuento = 0;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().equalsIgnoreCase(rut)) {
+                totalBonoDescuento += alojamiento.bonoDescuento();
+            }
+        }
+        return String.valueOf(totalBonoDescuento);
     }
 
 
@@ -150,24 +154,45 @@ public class EmpresaTurismo {
     }
 
 
-    public int valorAPagarCliente(String rut) {
-        for (MedioDeAlojamiento medio : empresaTurismo) {
-            if (medio.getDatosCliente().getRut().equals(rut)) {
-                return medio.valorACancelar();
+    public String valorAPagarCliente(String rut) {
+        MedioDeAlojamiento alojamientoEncontrado = null;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
+                alojamientoEncontrado = alojamiento;
+                break;
             }
         }
-        return 0;
+        if (alojamientoEncontrado == null) {
+            return "No se pudo calcular debido a que el rut ingresado no existe en nuestros registros, favor intente con otro. \n";
+        }
+        int totalAPagar = 0;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().equalsIgnoreCase(rut)) {
+                totalAPagar = alojamiento.valorACancelar();
+            }
+        }
+        return String.valueOf(totalAPagar);
     }
 
 
     public String obtenerIncrementoValorBase(String rut) {
-        for (MedioDeAlojamiento medio : empresaTurismo) {
-            if (medio instanceof Cabagna && medio.getDatosCliente().getRut().equals(rut)) {
-                int incremento = ((Cabagna) medio).incrementaValorBase();
-                return "$" + incremento;
+        MedioDeAlojamiento alojamientoEncontrado = null;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento.getDatosCliente().getRut().compareToIgnoreCase(rut) == 0) {
+                alojamientoEncontrado = alojamiento;
+                break;
             }
         }
-        return "$0. No existe incremento en el valor base para el rut: " + rut + ":D";
+        if (alojamientoEncontrado == null) {
+            return "No se pudo calcular debido a que el rut ingresado no existe en nuestros registros, favor intente con otro. \n";
+        }
+        int totalIncremento = 0;
+        for (MedioDeAlojamiento alojamiento : empresaTurismo) {
+            if (alojamiento instanceof Cabagna && alojamiento.getDatosCliente().getRut().equals(rut)) {
+                totalIncremento = ((Cabagna) alojamiento).incrementaValorBase();
+            }
+        }
+        return String.valueOf(totalIncremento);
     }
 
 }
