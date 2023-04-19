@@ -71,7 +71,7 @@ public class App {
                             }
 
                             empresaTurismo.ingresarAlojamientoCarpa(new Carpa(new DatosCliente(nombreDelCliente, rutDeCliente), valorBasePorNoche, numDeNoches, tipoDeTemporada, cantidadDePersonas));
-                            System.out.println("La carpa se ha reservado de forma exitosa");
+                            System.out.println("La carpa se ha reservado de forma exitosa \n");
                         } else {
                             String fuma;
                             boolean clienteFuma = false;
@@ -121,7 +121,7 @@ public class App {
                                     }
                                 } while (!desayuno.equalsIgnoreCase("si") && !desayuno.equalsIgnoreCase("no"));
                                 empresaTurismo.ingresarAlojamientoHotel(new Hotel(new DatosCliente(nombreDelCliente, rutDeCliente), valorBasePorNoche, numDeNoches, tipoDeTemporada, clienteFuma, capacidadAlojamiento, incluyeDesayuno));
-                                System.out.println("El hotel se ha reservado de forma exitosa");
+                                System.out.println("El hotel se ha reservado de forma exitosa \n");
 
 
                             } else {
@@ -143,7 +143,7 @@ public class App {
                                     }
                                 } while (!conChimenea.equalsIgnoreCase("si") && !conChimenea.equalsIgnoreCase("no"));
                                 empresaTurismo.ingresarAlojamientoCabagna(new Cabagna(new DatosCliente(nombreDelCliente, rutDeCliente), valorBasePorNoche, numDeNoches, tipoDeTemporada, clienteFuma, capacidadAlojamiento, chimenea));
-                                System.out.println("La cabania se ha reservado de forma exitosa");
+                                System.out.println("La cabania se ha reservado de forma exitosa \n");
                             }
                         }
                     } else {
@@ -217,6 +217,7 @@ public class App {
 
     public static int menu() {
         System.out.println("****************************  Empresa de Turismo 'El mishi salvaje del desierto'  ****************************");
+        System.out.println("*********************************  Para continuar, ingrese número de opción  *********************************");
         System.out.println("1.\tIngresar reserva de alojamiento");
         System.out.println("2.\tMostrar datos de medios de alojamiento ingresados");
         System.out.println("3.\tMostrar datos de un cliente");
