@@ -3,7 +3,7 @@
 
 Aplicación que representa una empresa de turismo (MVC):
 
-• Menú con opciones:
+Menú con opciones:
 1.	Ingresar Medio de Alojamiento (almacena un objeto de tipo Carpa/Cabaña/Hotel en la colección, siempre que no exista, es decir solo se puede asociar un cliente por medio de alojamiento.)
 2.	Mostrar medios de alojamiento (muestra datos de todos los objetos almacenados)
 3.	Datos de un cliente X (si existe, muestra donde está alojado y todos los datos asociados)
