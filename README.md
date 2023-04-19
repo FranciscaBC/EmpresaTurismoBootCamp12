@@ -22,6 +22,4 @@ Métodos realizados:
 •	valorACancelar: devolverá el valor a cancelar, el cual al subtotal se le debe descontar el bono y sumar el adicional, donde corresponda.
 	• incrementaValorBase: aumenta el valor base en un 18% si la capacidad de la cabaña es superior a 5.
 
-sdf
-
 
